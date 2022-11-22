@@ -135,7 +135,7 @@ func (pS *SimpleConfFile) ReadConf(v interface{}) bool{
 
   defer file.Close()
 
-  data := make([]byte, 500)
+  data := make([]byte, 50000)
 
   count, err := file.Read(data)
 
@@ -237,7 +237,9 @@ func (pS *SimpleConfFile) DecryptString(cryptoText string) string {
   // The IV needs to be unique, but not secure. Therefore it's common to
   // include it at the beginning of the ciphertext.
   if len(ciphertext) < aes.BlockSize {
-    panic("ciphertext too short")
+    logmsg.Print(logmsg.Error, "ciphertext too short")
+    return(cryptoText) // just return what was passed in
+    //panic("ciphertext too short")
   }
   iv := ciphertext[:aes.BlockSize]
   ciphertext = ciphertext[aes.BlockSize:]

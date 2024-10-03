@@ -1,5 +1,5 @@
 module github.com/seldonsmule/simpleconffile
 
-go 1.17
+go 1.23.2
 
-require github.com/seldonsmule/logmsg v0.0.0-20210504192739-df66bdf17afb
+require github.com/seldonsmule/logmsg v0.0.0-20241003160416-31459cf370a7
